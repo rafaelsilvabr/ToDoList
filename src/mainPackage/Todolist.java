@@ -59,7 +59,7 @@ public class Todolist {
             startWord = nameStartin + 7;
             endWord = line.indexOf("}", startWord);
             String status = line.substring(startWord+1, endWord-1);
-            i = endWord+1;
+
 
             tasks.add(new Task(name,description,deadline,priorityLevel,category,status));
             line = readFile.readLine();
@@ -216,8 +216,8 @@ public class Todolist {
         FileWriter file = new FileWriter("tasks.txt");
         PrintWriter printFile = new PrintWriter(file);
 
-        for (int i=0; i<tasks.size(); i++){
-            printFile.println(tasks.get(i));
+        for (Task task : tasks) {
+            printFile.println(task);
         }
         file.close();
         input.close();
