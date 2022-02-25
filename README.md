@@ -2,5 +2,5 @@
 
 src -> codes
 
-Para executar o programa é só acessar o diretório out/production/ToDoList/mainPackage e rodar o comando
->$ java Todolist
+Para executar o programa acesse o diretório do projeto e execute o comando
+>$ java -jar out/artifacts/ToDoList_jar/ToDoList.jar
