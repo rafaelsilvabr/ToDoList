@@ -14,48 +14,62 @@ public class ToDoTasks implements crudTasks{
 
     @Override
     public void create(String name, String description, String deadline, int priorityLevel, String category, String status) {
-        Task newTask = new Task(name,description,deadline,priorityLevel,category,status);
-        tasks.add(newTask);
+        if(priorityLevel>0 && priorityLevel<=5){
+            Task newTask = new Task(name,description,deadline,priorityLevel,category,status);
+            tasks.add(newTask);
 
-        System.out.println("Nova Task Adicionada");
-        sort();
+            System.out.println("Nova Task Adicionada");
+            sort();
+        }
+        else {
+            System.out.println("Nível de Prioridade permitido apenas entre 1 e 5!");
+        }
+
     }
 
     @Override
     public void delete(int idToRemove) {
-        tasks.remove(idToRemove);
-        System.out.println("Tarefa removida com sucesso!!");
+        if(idToRemove < tasks.size()){
+            tasks.remove(idToRemove);
+            System.out.println("Tarefa removida com sucesso!!");
+        }else {
+            System.out.println("ID inválido, task não removida!");
+        }
     }
 
     @Override
     public void update(int idToUpdate) {
-        delete(idToUpdate+1);
+        if(idToUpdate<tasks.size()) {
+            delete(idToUpdate + 1);
 
-        String name;
-        String description;
-        String deadline;
-        int priorityLevel;
-        String category;
-        String status;
+            String name;
+            String description;
+            String deadline;
+            int priorityLevel;
+            String category;
+            String status;
 
-        Scanner input = new Scanner(System.in);
+            Scanner input = new Scanner(System.in);
 
-        System.out.println("Informe o novo nome da tarefa");
-        name = input.nextLine();
-        System.out.println("Informe a nova descrição da tarefa");
-        description = input.nextLine();
-        System.out.println("Informe a nova deadline da tarefa");
-        deadline = input.nextLine();
-        System.out.println("Informe o novo nível de prioridade da tarefa (de 1 a 5)");
-        priorityLevel = input.nextInt();
-        input.nextLine();
-        System.out.println("Informe nova a categoria da tarefa");
-        category = input.nextLine();
-        System.out.println("Informe o novo status da tarefa");
-        status = input.nextLine();
+            System.out.println("Informe o novo nome da tarefa");
+            name = input.nextLine();
+            System.out.println("Informe a nova descrição da tarefa");
+            description = input.nextLine();
+            System.out.println("Informe a nova deadline da tarefa");
+            deadline = input.nextLine();
+            System.out.println("Informe o novo nível de prioridade da tarefa (de 1 a 5)");
+            priorityLevel = input.nextInt();
+            input.nextLine();
+            System.out.println("Informe nova a categoria da tarefa");
+            category = input.nextLine();
+            System.out.println("Informe o novo status da tarefa");
+            status = input.nextLine();
 
-        create(name,description,deadline,priorityLevel,category,status);
-        System.out.println("Task atualizada com sucesso");
+            create(name, description, deadline, priorityLevel, category, status);
+            System.out.println("Task atualizada com sucesso");
+        }else{
+            System.out.println("ID Inválido, task não atualizada!");
+        }
     }
 
     @Override

@@ -126,7 +126,7 @@ public class Todolist {
                         System.out.println("Informe o id da Task que será atualizada");
                         int idToUpdate = input.nextInt();
                         input.nextLine();
-                        tasks.update(idToUpdate+1);
+                        tasks.update(idToUpdate-1);
 
                     } catch (Exception e) {
                         throw new Exception("Erro ao tentar atualizar task");
@@ -145,7 +145,7 @@ public class Todolist {
                         int idToRemove = input.nextInt();
                         input.nextLine();
 
-                        tasks.delete(idToRemove+1);
+                        tasks.delete(idToRemove-1);
 
                     } catch (Exception e) {
                         throw new Exception("Erro ao tentar deletar task");
