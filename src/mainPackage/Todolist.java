@@ -8,7 +8,7 @@ public class Todolist {
     public static void main (String [] args) throws Exception{
 
         Scanner input = new Scanner(System.in);
-        ArrayList<Task> tasks = new ArrayList<>();
+        ToDoTasks tasks = new ToDoTasks();
         int flag = 0;
 
         //Carrega lista de tasks na memória
@@ -60,8 +60,7 @@ public class Todolist {
             endWord = line.indexOf("}", startWord);
             String status = line.substring(startWord+1, endWord-1);
 
-
-            tasks.add(new Task(name,description,deadline,priorityLevel,category,status));
+            tasks.create(name,description,deadline,priorityLevel,category,status);
             line = readFile.readLine();
         }
 
@@ -112,10 +111,7 @@ public class Todolist {
                     System.out.println("Informe status da nova tarefa");
                     status = input.nextLine();
 
-                    Task newTask = new Task(name,description,deadline,priorityLevel,category,status);
-
-                    tasks.add(newTask);
-                    System.out.println("Nova Task Adicionada");
+                    tasks.create(name,description,deadline,priorityLevel,category,status);
                 }
                 catch (Exception e) {
                     throw new Exception("Erro ao criar nova tarefa");
@@ -123,42 +119,14 @@ public class Todolist {
             }
 
             if(action == 2){//Update
-                if(tasks.size()>0){
-                    for (int i=0; i<tasks.size();i++){
-                        System.out.println(i+1 + " - " + tasks.get(i) + "\n");
-                    }
+                if(tasks.tasks.size()>0){
+                    tasks.list();
 
                     try{
                         System.out.println("Informe o id da Task que será atualizada");
-                        int idToRemove = input.nextInt();
+                        int idToUpdate = input.nextInt();
                         input.nextLine();
-                        tasks.remove(idToRemove+1);
-
-                        String name;
-                        String description;
-                        String deadline;
-                        int priorityLevel;
-                        String category;
-                        String status;
-
-                        System.out.println("Informe o novo nome da tarefa");
-                        name = input.nextLine();
-                        System.out.println("Informe a nova descrição da tarefa");
-                        description = input.nextLine();
-                        System.out.println("Informe a nova deadline da tarefa");
-                        deadline = input.nextLine();
-                        System.out.println("Informe o novo nível de prioridade da tarefa (de 1 a 5)");
-                        priorityLevel = input.nextInt();
-                        input.nextLine();
-                        System.out.println("Informe nova a categoria da tarefa");
-                        category = input.nextLine();
-                        System.out.println("Informe o novo status da tarefa");
-                        status = input.nextLine();
-
-                        Task newTask = new Task(name,description,deadline,priorityLevel,category,status);
-
-                        tasks.add(newTask);
-                        System.out.println("Task atualizada com sucesso");
+                        tasks.update(idToUpdate+1);
 
                     } catch (Exception e) {
                         throw new Exception("Erro ao tentar atualizar task");
@@ -169,18 +137,15 @@ public class Todolist {
             }
 
             if(action == 3){//Delete
-                if(tasks.size()>0){
-                    for (int i=0; i<tasks.size();i++){
-                        System.out.println(i+1 + " - " + tasks.get(i) + "\n");
-                    }
+                if(tasks.tasks.size()>0){
+                    tasks.list();
 
                     try {
                         System.out.println("Informe o ID da tafera que será removida\n");
                         int idToRemove = input.nextInt();
                         input.nextLine();
 
-                        tasks.remove(idToRemove+1);
-                        System.out.println("Tarefa removida com sucesso!!");
+                        tasks.delete(idToRemove+1);
 
                     } catch (Exception e) {
                         throw new Exception("Erro ao tentar deletar task");
@@ -192,31 +157,15 @@ public class Todolist {
             }
 
             if(action == 4){//List
-                if(tasks.size()>0){
-                    for (int i=0; i<tasks.size();i++){
-                        System.out.println(i+1 + " - " + tasks.get(i));
-                    }
-                }else{
-                    System.out.println("Não existe nenhuma task criada\n");
-                }
+                tasks.list();
             }
-
-            // Ordena Array de Tasks
-            Collections.sort(tasks, new Comparator<Task>() {
-                @Override
-                public int compare(Task a, Task b) {
-                    if(a.getPriorityLevel()<b.getPriorityLevel()){
-                        return 1;
-                    }return -1;
-                }
-            });
         }
         //salvar arraylist em .txt
 
         FileWriter file = new FileWriter("tasks.txt");
         PrintWriter printFile = new PrintWriter(file);
 
-        for (Task task : tasks) {
+        for (Task task : tasks.tasks) {
             printFile.println(task);
         }
         file.close();

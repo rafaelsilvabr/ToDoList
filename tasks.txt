@@ -1,0 +1,3 @@
+Task{name='task0', description='dsdasdas', deadline='dasdasdas', priorityLevel=2, category='sdasdasds', status='dadsada'}
+Task{name='task0', description='dsada', deadline='dasdas', priorityLevel=2, category='dsadas', status='dasdad'}
+Task{name='task1', description='aS', deadline='dasdasdas', priorityLevel=1, category='dsadad', status='dasdasd'}
