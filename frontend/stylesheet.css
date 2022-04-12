@@ -1,0 +1,62 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.campoInsercao {
+    width: 600px;
+    height: 100%;
+    padding-bottom: 10px;
+    background: dodgerblue  ;
+    border-radius: 10px;
+}
+
+.whitespace {
+    width: 10px;
+    height: 10px;
+    background: white  ;
+    border-radius: 10px;
+}
+
+.campoListagem {
+    width: 600px;
+    background: powderblue;
+    border-radius: 10px;
+}
+
+.erro {
+    color: red;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.titulo{
+    color: white;
+}
+
+* {
+    transition: all .2s ease;
+}
+
+.infoButton {
+    width: 25px;
+    height: 25px;
+    border-radius: 15px;
+    text-align-all: center;
+    align-content: first;
+    float: left;
+    background: deepskyblue;
+}
+
+.task {
+    border-radius: 10px;
+    background: aliceblue;
+    width: 600px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}

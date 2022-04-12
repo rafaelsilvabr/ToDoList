@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css" media="screen"/>
+</head>
+<body>
+    <div class="container">
+        <div class="campoInsercao">
+
+            <button class="infoButton" type="button" onclick="alert('-Como adicionar uma task?\n   Digite as informações da task nos campos abaixo e pressione Adicionar.\n-Como remover uma task?\n   Escolha a task que será removida na lista de tasks e pressione Excluir\n-Como Editar uma Task?\n   Insira os novos dados da Task nos campos de inserção, após isso, escolha uma task na lista de task e pressione Editar, os valores da task serão atualizados para os dados que estavam presentes no campo de insersão.')">i</button>
+
+
+            <p class="erro"></p>
+            <h1 class="titulo">ToDo List</h1>
+            <div class="inputTasks">
+                <h2 class="titulo">Adicione uma Task</h2>
+                <input class="inputName" type="text" placeholder="Nome da Task!">
+                <input class="inputDescription" type="text" placeholder="Descrição detalhada">
+                <input class="inputDeadline" type="date" placeholder="Data Limite">
+                <input class="inputPriority" type="text" placeholder="Nível de Prioridade">
+                <input class="inputCategory" type="text" placeholder="Categoria">
+                <input class="inputStatus" type="text" placeholder="Status">
+                <button class="button_adc" onclick="cadastraTask()">+</button>
+            </div>
+        </div>
+        <div class="whitespace"></div>
+        <div class="campoListagem">
+            <h2 class="tituloListaAtividaes">Atividades</h2>
+            <div class="listaAtividades"></div>
+        </div>
+    </div>
+<script src="app.js"></script>
+</body>
+</html>
