@@ -47,8 +47,21 @@ function criaTask(){
     atividades.appendChild(task);
 };
 
+function validaInputs(valorPrioridade, valorData){
+    const regPriority = RegExp("[1-5]")
+    const validaPrioridade = regPriority.test(valorPrioridade)
+
+    const data = valorData.split("-")
+    const dataAtual = new Date()
+    const validaAno = data[0] >= dataAtual.getFullYear()
+    const validaMes = data[1] >= dataAtual.getMonth()+1
+    const validaDia = data[2] >= dataAtual.getDate()
+
+    return (validaPrioridade && (validaAno && validaMes && validaDia))
+}
+
 function cadastraTask(){
-    if(inputPriority.value>0 && inputPriority.value<6){
+    if(validaInputs(inputPriority.value, inputDeadline.value)){
         erro.style.display = "none";
         criaTask()
     }else{
