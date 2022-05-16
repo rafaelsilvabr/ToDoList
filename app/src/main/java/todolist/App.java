@@ -1,18 +1,19 @@
-package mainPackage;
+package todolist;
 
 import java.io.*;
 import java.util.*;
 
-public class Todolist {
+public class App {
 
-    public static void main (String [] args) throws Exception{
-
+    public static void main(String[] args) throws Exception{
         Scanner input = new Scanner(System.in);
         ToDoTasks tasks = new ToDoTasks();
         int flag = 0;
 
+        System.out.println(ClassLoader.getSystemResource("tasks.txt").getFile());
+
         //Carrega lista de tasks na memória
-        FileReader fileR = new FileReader("tasks.txt");
+        FileReader fileR = new FileReader("src/main/resources/tasks.txt");
         BufferedReader readFile = new BufferedReader(fileR);
 
         String line= readFile.readLine();
@@ -162,7 +163,7 @@ public class Todolist {
         }
         //salvar arraylist em .txt
 
-        FileWriter file = new FileWriter("tasks.txt");
+        FileWriter file = new FileWriter("src/main/resources/tasks.txt");
         PrintWriter printFile = new PrintWriter(file);
 
         for (Task task : tasks.tasks) {
@@ -171,5 +172,6 @@ public class Todolist {
         file.close();
         input.close();
     }
+
 
 }

@@ -1,4 +1,4 @@
-package mainPackage;
+package todolist;
 
 public interface crudTasks {
 

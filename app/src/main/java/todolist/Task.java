@@ -1,6 +1,4 @@
-package mainPackage;
-
-import java.util.Collections;
+package todolist;
 
 public class Task {
     private String name;
